@@ -1,0 +1,18 @@
+EXTRA_DIST = \
+	autogen.sh \
+	COPYING.LGPL NOTES \
+	Makefile.mk \
+	_collelem.c _collmult.c \
+	bracket.c regcomp.c regdfa.c \
+	regexec.c regnfa.c regparse.c stubs.c
+
+lib_LIBRARIES = libuxre.a
+include_HEADERS = \
+	colldata.h re.h regdfa.h regex.h wcharm.h
+
+libuxre_a_SOURCES = \
+	onefile.c regfree.c regerror.c
+
+onefile.c: _collelem.c _collmult.c bracket.c \
+	regcomp.c regdfa.c regexec.c regfree.c \
+	regnfa.c regparse.c stubs.c
